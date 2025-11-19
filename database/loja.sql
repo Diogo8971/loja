@@ -42,3 +42,15 @@ CREATE TABLE encomendas (
     atualizado_em DATETIME NOT NULL DEFAULT GETDATE(),
     FOREIGN KEY (utilizador_id) REFERENCES utilizadores(id)
 );
+
+
+
+CREATE TRIGGER trg_produtos_update
+ON produtos
+AFTER UPDATE
+AS
+BEGIN
+    UPDATE produtos 
+    SET atualizado_em = GETDATE()
+    WHERE id IN (SELECT id FROM inserted);
+END;
