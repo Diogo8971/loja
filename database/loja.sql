@@ -1,0 +1,12 @@
+
+CREATE TABLE categorias (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL UNIQUE,
+    descricao VARCHAR(500),
+    criado_em DATETIME NOT NULL DEFAULT GETDATE()
+);
+
+
+
+
+
