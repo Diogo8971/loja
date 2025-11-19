@@ -31,6 +31,9 @@ CREATE TABLE produtos (
     atualizado_em DATETIME NOT NULL DEFAULT GETDATE(),
     FOREIGN KEY (categoria_id) REFERENCES categorias(id));
 
+
+
+
     CREATE TRIGGER trg_produtos_update
 ON produtos
 AFTER UPDATE
@@ -41,6 +44,9 @@ BEGIN
     WHERE id IN (SELECT id FROM inserted);
 END; 
 
+
+
+
 CREATE TABLE imagens_produtos (
     id INT IDENTITY(1,1) PRIMARY KEY,
     produto_id INT NOT NULL,
@@ -50,3 +56,5 @@ CREATE TABLE imagens_produtos (
     criado_em DATETIME NOT NULL DEFAULT GETDATE(),
     FOREIGN KEY (produto_id) REFERENCES produtos(id) ON DELETE CASCADE
 );
+
+
