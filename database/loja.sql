@@ -67,7 +67,6 @@ END;
 
 
 
-
 CREATE TABLE imagens_produtos (
     id INT IDENTITY(1,1) PRIMARY KEY,
     produto_id INT NOT NULL,
@@ -76,4 +75,9 @@ CREATE TABLE imagens_produtos (
     principal BIT NOT NULL DEFAULT 0,
     criado_em DATETIME NOT NULL DEFAULT GETDATE(),
     FOREIGN KEY (produto_id) REFERENCES produtos(id) ON DELETE CASCADE
+);
+
+CREATE TABLE configuracoes (
+    chave VARCHAR(255) PRIMARY KEY,
+    valor VARCHAR(2000)
 );
