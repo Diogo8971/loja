@@ -1,3 +1,23 @@
+
+
+=======
+
+CREATE TABLE categorias (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL UNIQUE,
+    descricao VARCHAR(500),
+    criado_em DATETIME NOT NULL DEFAULT GETDATE()
+);
+
+CREATE TABLE utilizadores (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    nome VARCHAR(255),
+    email VARCHAR(255) UNIQUE,
+    password VARCHAR(255)
+);
+
+
+
 CREATE TABLE produtos (
     id INT IDENTITY(1,1) PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
@@ -9,5 +29,4 @@ CREATE TABLE produtos (
     categoria_id INT NULL,
     criado_em DATETIME NOT NULL DEFAULT GETDATE(),
     atualizado_em DATETIME NOT NULL DEFAULT GETDATE(),
-    FOREIGN KEY (categoria_id) REFERENCES categorias(id)
-);
+    FOREIGN KEY (categoria_id) REFERENCES categorias(id));
